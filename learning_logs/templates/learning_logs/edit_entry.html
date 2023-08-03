@@ -1,0 +1,165 @@
+{% extends 'learning_logs/base.html' %}
+{% block css %}
+
+<style>
+        body {
+        font-family: 'Arial', sans-serif;
+        background-color: #36393F;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: #202225;
+        padding: 10px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin: 0;
+    }
+
+    /* Main Content Styles */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    /* Discord-style Message Box */
+    .message-box {
+        background-color: #40444B;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .message-box p {
+        margin: 0;
+    }
+
+    .message-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Discord-style Button */
+    .discord-button {
+        background-color: #7289DA;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .discord-button:hover {
+        background-color: #677BC4;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #202225;
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Link Styles */
+    a {
+        color: #7289DA;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Main container for the Discord-style elements */
+.discord-style {
+  background-color: #36393f;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the topic link */
+.discord-style p {
+  margin: 0;
+}
+
+.discord-style a {
+  color: #7289da;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.discord-style a:hover {
+  color: #ffffff;
+}
+
+/* Styling for the form elements */
+.discord-style form {
+  margin-top: 15px;
+}
+
+.discord-style button {
+  background-color: #7289da;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.discord-style button:hover {
+  background-color: #5a66b7;
+}
+
+/* Styling for form inputs */
+.discord-style input[type="text"],
+.discord-style textarea {
+  background-color: #2c2f33;
+  color: #ffffff;
+  border: 1px solid #3e4147;
+  border-radius: 3px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Styling for form labels */
+.discord-style label {
+  display: block;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="discord-style">
+    <p><a href="{% url 'learning_logs:topic' topic.id %}">Topic: {{ topic }}</a></p>
+    <p>Edit Entry:</p>
+    <form action="{% url 'learning_logs:edit_entry' entry.id %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name="submit">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

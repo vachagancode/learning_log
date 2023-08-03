@@ -1,0 +1,255 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block css %}
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #36393F;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #202225;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+/* Main Content Styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Discord-style Message Box */
+.message-box {
+    background-color: #40444B;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.message-box p {
+    margin: 0;
+}
+
+.message-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Discord-style Button */
+.discord-button {
+    background-color: #7289DA;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.discord-button:hover {
+    background-color: #677BC4;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #202225;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Link Styles */
+a {
+    color: #7289DA;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.heading {
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+.list {
+    width: 700px;
+    border: 0.1px solid rgb(152, 152, 152);
+    height: 250px;
+    padding-left: 10px;
+    border-radius: 25px;
+    box-shadow: 0 0 2px #fff;
+}
+
+/* Styling for the heading */
+.heading {
+  color: #7289da;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Main container for the entries */
+.container {
+  background-color: #36393f;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the entry list */
+.container ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container li {
+  margin: 10px 0;
+  border: 1px solid #3e4147;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Styling for entry date and text */
+.container p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* Styling for entry date */
+.container p:first-child {
+  font-weight: bold;
+}
+
+/* Styling for line breaks in entry text */
+.container p:last-child {
+  white-space: pre-wrap;
+}
+
+/* Discord-style button */
+.discord-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #7289da;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.discord-btn:hover {
+  background-color: #5a66b7;
+}
+
+.add {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Base styles */
+.add {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.discord-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #7289da;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.container h2 {
+  font-size: 20px;
+}
+
+.list {
+  margin-bottom: 10px;
+}
+
+.list p {
+  margin: 0;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+    .list {
+        width: 400px;
+    }
+
+  .add h1 {
+    font-size: 20px;
+  }
+
+  .discord-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .container h2 {
+    font-size: 18px;
+  }
+
+  .list p {
+    font-size: 14px;
+  }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="add">
+    <h1 class="heading">Topic: {{ topic }}</h1>
+    <a class="discord-btn" href="{% url 'learning_logs:new_entry' topic.id %}">Add Your Entry</a>
+  </div>
+  <div class="container">
+    <h2>Entries Found:</h2>
+    <ul>
+      {% for entry in entries %}
+        <li>
+          <div class="list">
+            <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ entry.text|linebreaks }}</p>
+            <a class="discord-btn" href="{% url 'learning_logs:edit_entry' entry.id %}">Edit This Entry</a>
+          </div>
+        </li>
+      {% empty %}
+        <li><p>No entries for this topic</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+{% endblock %}

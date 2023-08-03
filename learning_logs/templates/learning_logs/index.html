@@ -1,0 +1,136 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block css %}
+<style>
+    /* Global Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #36393F;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: #202225;
+        padding: 10px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin: 0;
+    }
+
+    /* Main Content Styles */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    /* Discord-style Message Box */
+    .message-box {
+        background-color: #40444B;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .message-box p {
+        margin: 0;
+    }
+
+    .message-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Discord-style Button */
+    .discord-button {
+        background-color: #7289DA;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .discord-button:hover {
+        background-color: #677BC4;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #202225;
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Link Styles */
+    a {
+        color: #7289DA;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .typewriter-text {
+        overflow: hidden; /* Hide overflowing characters */
+        border-right: 0.15em solid #fff; /* Cursor effect */
+        white-space: nowrap; /* Keep text in one line */
+        letter-spacing: 0.15em; /* Adjust spacing between characters */
+        animation: typing 4s steps(40) infinite, blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0; /* Start with no width (invisible) */
+        }
+        to {
+            width: 100%; /* Animate to full width */
+        }
+    }
+
+    @keyframes blink-caret {
+        from, to {
+            border-color: transparent; /* Hide the caret */
+        }
+        50% {
+            border-color: #fff; /* Show the caret */
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="message-box">
+            <p class="typewriter-text">Learning Log is your ultimate destination for recording and organizing your learning journey. Whether you're a student, a professional, or simply a curious mind, this platform empowers you to document and reflect on your educational pursuits in a seamless and insightful manner.
+                Discover the joy of tracking your progress as you delve into various subjects, courses, and projects. Our user-friendly interface allows you to create personalized logs, where you can jot down valuable insights, breakthroughs, and challenges you encounter along the way.</p>
+        </div>
+        <p>
+            Learning Log is an engaging and intuitive online platform designed to empower users in their pursuit of knowledge and personal growth. As an interactive journaling tool, Learning Log enables users to document and organize their learning experiences, reflections, and insights in a structured and user-friendly manner.
+
+Upon entering Learning Log, users are welcomed by a sleek and inviting interface, encouraging them to embark on their learning journey. Whether an avid learner, a curious explorer, or a dedicated student, the platform caters to a diverse range of users seeking to expand their knowledge horizons.
+
+The heart of Learning Log lies in its seamless topic creation feature, allowing users to effortlessly categorize and manage their learning interests. Each topic serves as a dedicated space for users to record their thoughts, progress, and discoveries. As users delve deeper into their chosen topics, they can log new entries, reflecting on key takeaways and recording new insights, ensuring a personalized and ever-evolving repository of knowledge.
+
+Emphasizing collaboration and community, Learning Log offers opportunities for users to connect with like-minded individuals who share similar interests. By engaging in thoughtful discussions and knowledge exchange, users can enrich their learning experiences and gain fresh perspectives on their chosen subjects.
+
+With its mobile-responsive design, Learning Log accommodates users on the go, making learning accessible anytime, anywhere. Whether on a computer, tablet, or smartphone, the platform seamlessly adapts to different devices, ensuring a smooth and enjoyable learning experience across all screens.
+
+Ultimately, Learning Log stands as a valuable companion on one's lifelong learning journey, fostering a sense of accomplishment and growth through the power of self-discovery and shared knowledge. By providing an intuitive and inspiring environment, the platform invites users to continuously expand their intellectual horizons and become active participants in a vibrant community of lifelong learners.
+        </p>
+        <!-- Add your learning log content here -->
+    </div>
+{% endblock %}

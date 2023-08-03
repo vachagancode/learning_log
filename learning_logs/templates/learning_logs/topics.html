@@ -1,0 +1,180 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block css %}
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #36393F;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #202225;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+/* Main Content Styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Discord-style Message Box */
+.message-box {
+    background-color: #40444B;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.message-box p {
+    margin: 0;
+}
+
+.message-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Discord-style Button */
+.discord-button {
+    background-color: #7289DA;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.discord-button:hover {
+    background-color: #677BC4;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #202225;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Link Styles */
+a {
+    color: #7289DA;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Main container for the topics */
+.topics {
+  background-color: #36393f;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the topic list */
+.topics ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling for list items (square buttons) */
+.topics li {
+  margin: 5px 0;
+}
+
+.topics li a {
+  display: block;
+  padding: 10px;
+  background-color: #7289da;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.topics li a:hover {
+  background-color: #5a66b7;
+}
+
+/* Base styles */
+.topics {
+  margin-top: 20px;
+}
+
+.topics h1 {
+  font-size: 24px;
+}
+
+.topics ul {
+  list-style: none;
+  padding: 0;
+}
+
+.topics li {
+  margin-bottom: 5px;
+}
+
+.topics li p {
+  margin: 0;
+  padding: 5px;
+}
+
+.topics li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+  .topics h1 {
+    font-size: 20px;
+  }
+
+  .topics li {
+    margin-bottom: 3px;
+  }
+
+  .topics li p {
+    font-size: 14px;
+    padding: 2px;
+  }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="topics">
+        <h1>Topics Found:</h1>
+
+        <ul>
+            {% for topic in topics %}
+                <li><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></li>
+            {% empty %}
+                <p>no topics found</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+

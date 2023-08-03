@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    {% block css %}
+
+    {% endblock %}
+
+    <style>
+        /* Discord-style header */
+.discord-header {
+  background-color: #2b2b2b;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.discord-header a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: color 0.2s;
+}
+
+.discord-header a:last-child {
+  margin-right: 0;
+}
+
+.discord-header a:hover {
+  color: #7289da;
+}
+
+/* Logo style */
+.discord-header .logo {
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+/* Base styles */
+.discord-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+.left-header {
+  flex: 1;
+}
+
+.right-header {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+  .discord-header {
+    flex-direction: column;
+  }
+
+  .right-header {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+    </style>
+</head>
+<body>
+  <header class="discord-header">
+    <div class="left-header">
+      <a class="logo" href="{% url 'learning_logs:index' %}">Learning Log</a> 
+      <a href="{% url 'learning_logs:topics' %}">Topics</a> 
+      <a href="{% url 'learning_logs:new_topic' %}">Add Topic</a>
+    </div>
+    <div class="right-header">
+      {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }} -</p>
+        <a href="{% url 'users:logout' %}">Log Out</a>
+      {% else %}
+        <a href="{% url 'users:register' %}">Register</a>
+        <a href="{% url 'users:login' %}">Log In</a>
+      {% endif %}
+    </div>
+  </header>
+  
+    {% block content %}
+    
+    {% endblock %}
+</body>
+</html>
